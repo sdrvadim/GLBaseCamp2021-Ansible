@@ -1,0 +1,11 @@
+---
+
+- name: Install pwquality
+  apt:
+    name: 
+      - libpam-pwquality
+      - cracklib-runtime
+    state: present
+  become: yes
+  become_method: sudo
+

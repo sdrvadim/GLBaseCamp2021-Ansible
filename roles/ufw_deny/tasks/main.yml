@@ -1,0 +1,8 @@
+---
+
+- name: Setup ufw
+  ufw: 
+    state: enabled 
+    policy: deny
+  become: yes
+  become_method: sudo

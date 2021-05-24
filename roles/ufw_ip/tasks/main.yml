@@ -1,0 +1,9 @@
+---
+
+- name: Allow ip
+  ufw: 
+    rule: allow
+    port: ssh
+    src: 192.168.1.50
+  become: yes
+  become_method: sudo

@@ -1,0 +1,21 @@
+---
+
+- hosts: group_1
+   tasks:
+   - name: Install pwquality
+     apt:
+       name: 
+        - libpam-pwquality
+        - cracklib-runtime
+       state: present
+     become: yes
+     become_method: sudo
+  
+   - name: Use pwquality when passwords are changed or created
+     lineinfile:
+       dest: /etc/pam.d/passwd
+       line: "password required pam_pwquality.so gecoscheck=1 enforce_for_root"
+       state: present
+     when:
+       - security_enable_pwquality_password_set | bool
+

@@ -1,0 +1,10 @@
+---
+
+- name: Use pwquality
+  lineinfile:
+    dest: /etc/pam.d/common-password
+    line: "password requisite pam_pwquality.so gecoscheck=1 enforce_for_root"
+    state: present
+  become: yes
+  become_method: sudo
+
